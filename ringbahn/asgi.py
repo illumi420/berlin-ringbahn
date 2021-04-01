@@ -1,5 +1,5 @@
 """
-ASGI config for ring_bahn project.
+ASGI config for ringbahn project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ring_bahn.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ringbahn.settings')
 
 application = get_asgi_application()
