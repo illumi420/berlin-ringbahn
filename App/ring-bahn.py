@@ -14,7 +14,7 @@ km_long = 37, 0
 Lists Descreption:
 
 *ringbahn_stations: 
- -is an Array of 26 Objects each object contaiens 3 items:
+ -is an Array of 27 Objects each object contaiens 3 items:
   ('name':str(station-name),'duration':int(minutes till nex station),'is_down':bool(station status))
  -ringbahn_stations is called in  fromTo() as parameter: stations_list.
  -in  duration() this list is sliced and appended to in_between_stations list.
@@ -39,22 +39,23 @@ ringbahn_stations = [
     {'name': "Innsbrucker Platz", 'duration': 2, 'is_down': False},
     {'name': "Bundesplatz", 'duration': 2, 'is_down': False},
     {'name': "Heidelberger Platz", 'duration': 2, 'is_down': False},
-    {'name': "Halensee", 'duration': 2, 'is_down': False},
-    {'name': "Westkreuz", 'duration': 1, 'is_down': False},
+    {'name': "Hohenzollerndamm", 'duration': 2, 'is_down': False},
+    {'name': "Halensee", 'duration': 1, 'is_down': False},
+    {'name': "Westkreuz", 'duration': 2, 'is_down': False},
     {'name': "Messe Nord/ICC", 'duration': 2, 'is_down': False},
-    {'name': "Westend", 'duration': 1, 'is_down': False},
-    {'name': "Jungfernheide", 'duration': 2, 'is_down': False},
-    {'name': "Beusselstraße", 'duration': 3, 'is_down': False},
+    {'name': "Westend", 'duration': 3, 'is_down': False},
+    {'name': "Jungfernheide", 'duration': 3, 'is_down': False},
+    {'name': "Beusselstraße", 'duration': 1, 'is_down': False},
     {'name': "Westhafen", 'duration': 3, 'is_down': False},
     {'name': "Wedding", 'duration': 2, 'is_down': False},
     {'name': "Gesundbrunnen", 'duration': 3, 'is_down': False},
     {'name': "Schönhauser Alle", 'duration': 2, 'is_down': False},
-    {'name': "Prenzlauer Alle", 'duration': 3, 'is_down': False},
+    {'name': "Prenzlauer Alle", 'duration': 2, 'is_down': False},
     {'name': "Greifswalder Straße", 'duration': 2, 'is_down': False},
     {'name': "Landsberger Alle", 'duration': 2, 'is_down': False},
     {'name': "Storkower Straße", 'duration': 2, 'is_down': False},
-    {'name': "Frankfurter Alle", 'duration': 6, 'is_down': False},
-    {'name': "Ostkreuz", 'duration': 2, 'is_down': False},
+    {'name': "Frankfurter Alle", 'duration': 2, 'is_down': False},
+    {'name': "Ostkreuz", 'duration': 6, 'is_down': False},
     {'name': "Treptower Park", 'duration': 3, 'is_down': False},
     {'name': "Sonnenallee", 'duration': 2, 'is_down': False},
     {'name': "Neukölln", 'duration': 1, 'is_down': False},
@@ -101,7 +102,7 @@ minutes_list = []
 -function duration takes two lists as parameters.
 -assigning the 'index' key values of temp_list objects in two diffrent variables.
 -the difference between the variables is how many stations are in between.
--slicing ringbahn_stations based on the two variables and appending them to in_between_stations.
+-slicing ringbahn_stations based on the two variables values as slicing indexes and appending them to in_between_stations.
 -taking 'duration' key value from in_between_stations objects and appending them in minutes_list.
 -adding minutes_list elements together and returning the value
 """
