@@ -1,4 +1,4 @@
-m_long = 37, 0
+km_long = 37, 0
 
 
 station_duration = [
@@ -56,7 +56,7 @@ first = temp_list[0]['index']
 second = temp_list[1]['index']
 another_list.append(station_duration[first:second+1])
 new_list = []
-print(another_list)
+# print(another_list[:]['duration'])
 # for q in another_list:
 #     new_list.append(q['duration'])
 # print(new_list)
