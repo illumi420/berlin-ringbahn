@@ -39,12 +39,12 @@ ringbahn_stations = [
     {'name': "Westhafen", 'duration': 3, 'is_down': False},
     {'name': "Wedding", 'duration': 2, 'is_down': False},
     {'name': "Gesundbrunnen", 'duration': 3, 'is_down': False},
-    {'name': "Schönhauser Alle", 'duration': 2, 'is_down': False},
-    {'name': "Prenzlauer Alle", 'duration': 2, 'is_down': False},
+    {'name': "Schönhauser Allee", 'duration': 2, 'is_down': False},
+    {'name': "Prenzlauer Allee", 'duration': 2, 'is_down': False},
     {'name': "Greifswalder Straße", 'duration': 2, 'is_down': False},
-    {'name': "Landsberger Alle", 'duration': 2, 'is_down': False},
+    {'name': "Landsberger Allee", 'duration': 2, 'is_down': False},
     {'name': "Storkower Straße", 'duration': 2, 'is_down': False},
-    {'name': "Frankfurter Alle", 'duration': 2, 'is_down': False},
+    {'name': "Frankfurter Allee", 'duration': 2, 'is_down': False},
     {'name': "Ostkreuz", 'duration': 6, 'is_down': False},
     {'name': "Treptower Park", 'duration': 3, 'is_down': False},
     {'name': "Sonnenallee", 'duration': 2, 'is_down': False},
@@ -71,12 +71,15 @@ for index in range(1, len(ringbahn_stations)):
             stations_class_list.append(Stations(index_counter,
                                                 station['name'], station['duration'], station['is_down']))
             index_counter += index
-
+# print("list of Stationsinstances: ", stations_class_list)
 
 station = {}
 print("<< Ring-Bahn Stations:")
 for obj in stations_class_list:
-    print(f"{bcolors.OKGREEN}{obj.index+1}.{bcolors.ENDC}{obj.name}", end='     ')
+    # Menu
+    print(f"{bcolors.OKGREEN}{obj.index+1}.{bcolors.ENDC}{obj.name}",
+          end=' * '*obj.duration),
+
     station['index'] = obj.index
     station['name'] = obj.name
     station['duration'] = obj.duration
@@ -89,3 +92,4 @@ print("temp_list: ", temp_list)
 print("*********************************")
 print("station: ", station)
 print(temp_list[0])
+print(len(temp_list))
