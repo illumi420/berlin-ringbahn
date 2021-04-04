@@ -59,11 +59,31 @@ for index in range(1, len(ringbahn_stations)):
             stations_class_list.append(Stations(index_counter,
                                                 station['name'], station['duration'], station['is_down']))
             index_counter += index
+
+
+counter = 0
+
+# for i in range(1, len(stations_class_list)):
+#     for obj in stations_class_list:
+#         if counter < len(stations_class_list):
+#             station['index'] = obj.index
+#             station['name'] = obj.name
+#             counter += i
+#             temp_list.append(i)
+
+# departure_station = input("Departure Station: ")
+# destination_station = input("Destination Station: ")
+
+station = {}
 for obj in stations_class_list:
-    temp_list.append(obj.index)
-    temp_list.append(obj.name)
-    temp_list.append(obj.duration)
+    station['index'] = obj.index
+    station['name'] = obj.name
+    station['duration'] = obj.duration
+    temp_list.append(
+        {'index': station['index'], 'name': station['name'], 'duration': station['duration']})
 
-    print(obj.index, obj.name, obj.duration, sep=' ')
+#     print(obj.index, obj.name, obj.duration, sep=' ')
 
-print(temp_list)
+print("temp_list: ", temp_list)
+print("*********************************")
+print("station: ", station)
