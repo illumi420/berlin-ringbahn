@@ -17,7 +17,7 @@ print(f"{bcolors.WARNING}RRRRRR   III  NN N NN GG{bcolors.ENDC}      {bcolors.FA
 print(f"{bcolors.FAIL}RR  RR   III  NN  NNN GG   GG        BB   BB AAAAAAA HH   HH NN  NNN {bcolors.ENDC}")
 print(f"{bcolors.FAIL}RR   RR IIIII NN   NN  GGGGGG        BBBBBB  AA   AA HH   HH NN   NN {bcolors.ENDC}")
 print(
-    "                                                             \x1B[3mS41\x1B[23m/\x1B[3mS42\x1B[23m")
+    f"                                                             \x1B[3m{bcolors.OKGREEN}S{bcolors.ENDC}41\x1B[23m/\x1B[3m{bcolors.OKGREEN}S{bcolors.ENDC}42\x1B[23m")
 
 
 km_long = 37, 0
@@ -76,7 +76,7 @@ for index in range(1, len(ringbahn_stations)):
 station = {}
 print("<< Ring-Bahn Stations:")
 for obj in stations_class_list:
-    print(f"{obj.index+1}.{obj.name}", end='     '),
+    print(f"{bcolors.OKGREEN}{obj.index+1}.{bcolors.ENDC}{obj.name}", end='     ')
     station['index'] = obj.index
     station['name'] = obj.name
     station['duration'] = obj.duration
@@ -88,3 +88,4 @@ print()
 print("temp_list: ", temp_list)
 print("*********************************")
 print("station: ", station)
+print(temp_list[0])
