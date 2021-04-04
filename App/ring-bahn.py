@@ -78,7 +78,7 @@ print("<< Ring-Bahn Stations:")
 for obj in stations_class_list:
     # Menu
     print(f"{bcolors.OKGREEN}{obj.index+1}.{bcolors.ENDC}{obj.name}",
-          end=' * '*obj.duration),
+          end='~+~'*obj.duration),
 
     station['index'] = obj.index
     station['name'] = obj.name
