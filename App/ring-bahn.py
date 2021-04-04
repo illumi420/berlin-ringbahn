@@ -87,14 +87,20 @@ for obj in stations_class_list:
     stations['duration'] = obj.duration
     temp_list.append(
         {'index': stations['index'], 'name': stations['name'], 'duration': stations['duration']})
+# add last station object to the array
+temp_list.append(
+    {'index': 27, 'name': temp_list[0]['name'], 'duration': temp_list[0]['duration']})
+last_station = temp_list[-1]
 print(
-    f"{bcolors.OKGREEN}{temp_list[0]['index']+28}.{bcolors.ENDC}{temp_list[0]['name']}")
+    f"{bcolors.OKGREEN}{last_station['index']+1}.{bcolors.ENDC}{last_station['name']}")
 #print("stations ", stations)
 
 print()
 print()
-print("temp_list: ", temp_list)
-print("*********************************")
-
-print(temp_list[0])
-print(len(temp_list))
+print("*"*((32*6)-3))
+print("for debugging")
+print("*"*((32*6)-3))
+print(f"{bcolors.OKGREEN}temp_list:{bcolors.ENDC}", temp_list)
+print(f"{bcolors.OKGREEN}last station:{bcolors.ENDC}", last_station)
+print(f"{bcolors.OKGREEN}Stations in total:{bcolors.ENDC}", len(temp_list))
+print("*"*((32*6)-3))
