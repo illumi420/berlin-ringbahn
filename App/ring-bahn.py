@@ -11,15 +11,27 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-print(f"{bcolors.WARNING}RRRRRR  IIIII NN   NN   GGGG         BBBBB     AAA   HH   HH NN   NN {bcolors.ENDC}")
-print(f"{bcolors.WARNING}RR   RR  III  NNN  NN  GG  GG        BB   B   AAAAA  HH   HH NNN  NN{bcolors.ENDC}")
-print(f"{bcolors.WARNING}RRRRRR   III  NN N NN GG{bcolors.ENDC}      {bcolors.FAIL}_____{bcolors.ENDC}  {bcolors.WARNING}BBBBBB  AA   AA HHHHHHH NN N NN{bcolors.ENDC}")
-print(f"{bcolors.FAIL}RR  RR   III  NN  NNN GG   GG        BB   BB AAAAAAA HH   HH NN  NNN {bcolors.ENDC}")
-print(f"{bcolors.FAIL}RR   RR IIIII NN   NN  GGGGGG        BBBBBB  AA   AA HH   HH NN   NN {bcolors.ENDC}")
-print("                                                                  <--")
-print(
-    f"                                                             \x1B[3m{bcolors.OKGREEN}S{bcolors.ENDC}41\x1B[23m/\x1B[3m{bcolors.OKGREEN}S{bcolors.ENDC}42\x1B[23m")
-print("                                                            -->")
+def menu():
+    # Logo
+    print(f"{' '*58}{bcolors.WARNING}RRRRRR  IIIII NN   NN   GGGG         BBBBB     AAA   HH   HH NN   NN {bcolors.ENDC}")
+    print(f"{' '*57}{bcolors.WARNING}RR   RR  III  NNN  NN  GG  GG        BB   B   AAAAA  HH   HH NNN  NN{bcolors.ENDC}")
+    print(f"{' '*56}{bcolors.WARNING}RRRRRR   III  NN N NN GG{bcolors.ENDC}      {bcolors.FAIL}_____{bcolors.ENDC}  {bcolors.WARNING}BBBBBB  AA   AA HHHHHHH NN N NN{bcolors.ENDC}")
+    print(f"{' '*55}{bcolors.FAIL}RR  RR   III  NN  NNN GG   GG        BB   BB AAAAAAA HH   HH NN  NNN {bcolors.ENDC}")
+    print(f"{' '*54}{bcolors.FAIL}RR   RR IIIII NN   NN  GGGGGG        BBBBBB  AA   AA HH   HH NN   NN {bcolors.ENDC}")
+    print(f"{' '*54}                                                                  <--")
+    print(
+        f"{' '*54}                                                             \x1B[3m{bcolors.OKGREEN}S{bcolors.ENDC}41\x1B[23m/\x1B[3m{bcolors.OKGREEN}S{bcolors.ENDC}42\x1B[23m")
+    print(f"{' '*54}                                                            -->")
+    print()
+    print()
+
+    # Menu
+    print("<< Ring-Bahn Stations:")
+    for obj in stations_class_list:
+        print(f"{bcolors.OKGREEN}{obj.index+1}.{bcolors.ENDC}{obj.name}",
+              end=' + '*obj.duration)
+    print(
+        f"{bcolors.OKGREEN}{last_station['index']+1}.{bcolors.ENDC}{last_station['name']}")
 
 
 km_long = 37, 0
@@ -77,23 +89,23 @@ for index in range(1, len(ringbahn_stations)):
 # print("list of Stationsinstances: ", stations_class_list)
 
 # func
-stations = {}
-print("<< Ring-Bahn Stations:")
-for obj in stations_class_list:
-    # Menu
-    print(f"{bcolors.OKGREEN}{obj.index+1}.{bcolors.ENDC}{obj.name}",
-          end=' + '*obj.duration)
 
+stations = {}
+
+for obj in stations_class_list:
     stations['index'] = obj.index
     stations['name'] = obj.name
     stations['duration'] = obj.duration
     temp_list.append(
         {'index': stations['index'], 'name': stations['name'], 'duration': stations['duration']})
+
 # add last station object to the array
 temp_list.append(
     {'index': 27, 'name': temp_list[0]['name'], 'duration': temp_list[0]['duration']})
-print(
-    f"{bcolors.OKGREEN}{last_station['index']+1}.{bcolors.ENDC}{last_station['name']}")
+last_station = temp_list[-1]
+
+# Menu
+menu()
 #print("stations ", stations)
 
 print()
@@ -103,7 +115,6 @@ print()
 debug section
 """
 any_station = temp_list[14]
-last_station = temp_list[-1]
 
 
 def debuggingFunc(station_list, a_station, end_station):
