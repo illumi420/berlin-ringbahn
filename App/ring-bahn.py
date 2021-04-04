@@ -1,11 +1,23 @@
-print("RRRRRR  IIIII NN   NN   GGGG         BBBBB     AAA   HH   HH NN   NN ")
-print("RR   RR  III  NNN  NN  GG  GG        BB   B   AAAAA  HH   HH NNN  NN")
-print("RRRRRR   III  NN N NN GG      _____  BBBBBB  AA   AA HHHHHHH NN N NN")
-print("RR  RR   III  NN  NNN GG   GG        BB   BB AAAAAAA HH   HH NN  NNN ")
-print("RR   RR IIIII NN   NN  GGGGGG        BBBBBB  AA   AA HH   HH NN   NN ")
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+
+print(f"{bcolors.WARNING}RRRRRR  IIIII NN   NN   GGGG         BBBBB     AAA   HH   HH NN   NN {bcolors.ENDC}")
+print(f"{bcolors.WARNING}RR   RR  III  NNN  NN  GG  GG        BB   B   AAAAA  HH   HH NNN  NN{bcolors.ENDC}")
+print(f"{bcolors.WARNING}RRRRRR   III  NN N NN GG{bcolors.ENDC}      {bcolors.FAIL}_____{bcolors.ENDC}  {bcolors.WARNING}BBBBBB  AA   AA HHHHHHH NN N NN{bcolors.ENDC}")
+print(f"{bcolors.FAIL}RR  RR   III  NN  NNN GG   GG        BB   BB AAAAAAA HH   HH NN  NNN {bcolors.ENDC}")
+print(f"{bcolors.FAIL}RR   RR IIIII NN   NN  GGGGGG        BBBBBB  AA   AA HH   HH NN   NN {bcolors.ENDC}")
 print(
     "                                                             \x1B[3mS41\x1B[23m/\x1B[3mS42\x1B[23m")
-print("")
 
 
 km_long = 37, 0
@@ -61,29 +73,18 @@ for index in range(1, len(ringbahn_stations)):
             index_counter += index
 
 
-counter = 0
-
-# for i in range(1, len(stations_class_list)):
-#     for obj in stations_class_list:
-#         if counter < len(stations_class_list):
-#             station['index'] = obj.index
-#             station['name'] = obj.name
-#             counter += i
-#             temp_list.append(i)
-
-# departure_station = input("Departure Station: ")
-# destination_station = input("Destination Station: ")
-
 station = {}
+print("<< Ring-Bahn Stations:")
 for obj in stations_class_list:
+    print(f"{obj.index+1}.{obj.name}", end='     '),
     station['index'] = obj.index
     station['name'] = obj.name
     station['duration'] = obj.duration
     temp_list.append(
         {'index': station['index'], 'name': station['name'], 'duration': station['duration']})
 
-#     print(obj.index, obj.name, obj.duration, sep=' ')
-
+print()
+print()
 print("temp_list: ", temp_list)
 print("*********************************")
 print("station: ", station)
