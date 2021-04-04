@@ -16,8 +16,10 @@ print(f"{bcolors.WARNING}RR   RR  III  NNN  NN  GG  GG        BB   B   AAAAA  HH
 print(f"{bcolors.WARNING}RRRRRR   III  NN N NN GG{bcolors.ENDC}      {bcolors.FAIL}_____{bcolors.ENDC}  {bcolors.WARNING}BBBBBB  AA   AA HHHHHHH NN N NN{bcolors.ENDC}")
 print(f"{bcolors.FAIL}RR  RR   III  NN  NNN GG   GG        BB   BB AAAAAAA HH   HH NN  NNN {bcolors.ENDC}")
 print(f"{bcolors.FAIL}RR   RR IIIII NN   NN  GGGGGG        BBBBBB  AA   AA HH   HH NN   NN {bcolors.ENDC}")
+print("                                                                  <--")
 print(
     f"                                                             \x1B[3m{bcolors.OKGREEN}S{bcolors.ENDC}41\x1B[23m/\x1B[3m{bcolors.OKGREEN}S{bcolors.ENDC}42\x1B[23m")
+print("                                                            -->")
 
 
 km_long = 37, 0
@@ -73,23 +75,26 @@ for index in range(1, len(ringbahn_stations)):
             index_counter += index
 # print("list of Stationsinstances: ", stations_class_list)
 
-station = {}
+stations = {}
 print("<< Ring-Bahn Stations:")
 for obj in stations_class_list:
     # Menu
     print(f"{bcolors.OKGREEN}{obj.index+1}.{bcolors.ENDC}{obj.name}",
-          end='~+~'*obj.duration),
+          end=' + '*obj.duration)
 
-    station['index'] = obj.index
-    station['name'] = obj.name
-    station['duration'] = obj.duration
+    stations['index'] = obj.index
+    stations['name'] = obj.name
+    stations['duration'] = obj.duration
     temp_list.append(
-        {'index': station['index'], 'name': station['name'], 'duration': station['duration']})
+        {'index': stations['index'], 'name': stations['name'], 'duration': stations['duration']})
+print(
+    f"{bcolors.OKGREEN}{temp_list[0]['index']+28}.{bcolors.ENDC}{temp_list[0]['name']}")
+#print("stations ", stations)
 
 print()
 print()
 print("temp_list: ", temp_list)
 print("*********************************")
-print("station: ", station)
+
 print(temp_list[0])
 print(len(temp_list))
