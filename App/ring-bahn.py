@@ -64,6 +64,7 @@ class Stations:
         self.is_down = is_down
 
 
+# func
 stations_class_list = []
 temp_list = []
 index_counter = 0
@@ -75,6 +76,7 @@ for index in range(1, len(ringbahn_stations)):
             index_counter += index
 # print("list of Stationsinstances: ", stations_class_list)
 
+# func
 stations = {}
 print("<< Ring-Bahn Stations:")
 for obj in stations_class_list:
@@ -90,17 +92,32 @@ for obj in stations_class_list:
 # add last station object to the array
 temp_list.append(
     {'index': 27, 'name': temp_list[0]['name'], 'duration': temp_list[0]['duration']})
-last_station = temp_list[-1]
 print(
     f"{bcolors.OKGREEN}{last_station['index']+1}.{bcolors.ENDC}{last_station['name']}")
 #print("stations ", stations)
 
 print()
 print()
-print("*"*((32*6)-3))
-print("for debugging")
-print("*"*((32*6)-3))
-print(f"{bcolors.OKGREEN}temp_list:{bcolors.ENDC}", temp_list)
-print(f"{bcolors.OKGREEN}last station:{bcolors.ENDC}", last_station)
-print(f"{bcolors.OKGREEN}Stations in total:{bcolors.ENDC}", len(temp_list))
-print("*"*((32*6)-3))
+
+"""
+debug section
+"""
+any_station = temp_list[14]
+last_station = temp_list[-1]
+
+
+def debuggingFunc(station_list, a_station, end_station):
+    print("*"*((32*6)-3))
+    print("for debugging")
+    print("*"*((32*6)-3))
+    print(f"{bcolors.OKGREEN}temp_list:{bcolors.ENDC}", station_list)
+    print("*"*((32*6)-3))
+    print(f"{bcolors.OKGREEN}a station:{bcolors.ENDC}", a_station)
+    print("*"*((32*6)-3))
+    print(f"{bcolors.OKGREEN}last station:{bcolors.ENDC}", end_station)
+    print("*"*((32*6)-3))
+    print(f"{bcolors.OKGREEN}Stations in total:{bcolors.ENDC}", len(station_list))
+    print("*"*((32*6)-3))
+
+
+#debuggingFunc(temp_list, any_station, last_station)
