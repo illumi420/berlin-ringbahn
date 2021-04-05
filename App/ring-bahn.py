@@ -1,3 +1,5 @@
+import random as r
+
 
 class bcolors:
     HEADER = '\033[95m'
@@ -23,15 +25,18 @@ def menu():
         f"{' '*54}                                                             \x1B[3m{bcolors.OKGREEN}S{bcolors.ENDC}41\x1B[23m/\x1B[3m{bcolors.OKGREEN}S{bcolors.ENDC}42\x1B[23m")
     print(f"{' '*54}                                                            -->")
     print()
-    print()
 
     # Menu
     print("<< Ring-Bahn Stations:")
+    print()
     for obj in stations_class_list:
-        print(f"{bcolors.OKGREEN}{obj.index+1}.{bcolors.ENDC}{obj.name}",
+        print(f"{bcolors.OKGREEN}{obj.index+1}{bcolors.ENDC}.{obj.name}",
               end=' + '*obj.duration)
     print(
         f"{bcolors.OKGREEN}{last_station['index']+1}.{bcolors.ENDC}{last_station['name']}")
+    print(
+        f"\n {bcolors.OKGREEN}b{bcolors.ENDC}.back  {bcolors.OKGREEN}q{bcolors.ENDC}.quit")
+    print()
 
 
 km_long = 37, 0
@@ -98,37 +103,110 @@ for obj in stations_class_list:
     stations['duration'] = obj.duration
     temp_list.append(
         {'index': stations['index'], 'name': stations['name'], 'duration': stations['duration']})
+    # print(stations['name'], stations)
+
 
 # add last station object to the array
 temp_list.append(
     {'index': 27, 'name': temp_list[0]['name'], 'duration': temp_list[0]['duration']})
 last_station = temp_list[-1]
 
+
+selected_stations = []
+
+
+def input_station():
+    start_station = ""
+    end_station = ""
+    print()
+    while start_station != 'q' and end_station != 'q':
+        for i in range(2):
+            try:
+                start_station = input(
+                    f">> Enter Departure-station {bcolors.OKGREEN}number{bcolors.ENDC}: ").lower()
+
+                if start_station == 'q':
+                    break
+
+                end_station = input(
+                    f">> Enter Destination-station {bcolors.OKGREEN}number{bcolors.ENDC}: ").lower()
+
+                if end_station == 'q':
+                    break
+                    if end_station == 'b':
+                        return
+
+                if station_validation(temp_list, start_station, end_station):
+                    # print(another_list)
+                    another_list.pop()
+
+                    input("Press Enter to start again")
+                    menu()
+
+            except:
+                print("invalid input")
+
+
+another_list = []
+minutes_list = []
+
+
+def station_validation(temp_station_list, start, end):
+    start = int(start) - 1
+    end = int(end) - 1
+    if start < end:
+        another_list.append(temp_station_list[int(start):int(end)])
+        counter = 0
+        for i in range(len(another_list)):
+            for j in another_list[0]:
+                minutes_list.append(another_list[0][counter]['duration'])
+                counter += 1
+                minutes = 0
+                for k in minutes_list:
+                    minutes += k
+                train = "S41"
+            infos(start, end, train, minutes)
+        del minutes_list[:]
+        return "S41"
+
+
+def infos(start, end, train, minutes):
+    print()
+    print("<< From", temp_list[start]['name'],
+          "To", temp_list[end]['name'])
+    print("<< Ride the", train, "for", end-start, "stations")
+    print("<< Duration:", minutes, "minutes")
+    greetings = ["<< Be aware of unfriendly Ticket-controllers!!!",
+                 "<< Enjoy Berlin", "<< Have a nice Day"]
+    print(r.choice(greetings))
+    print()
+
+
 # Menu
 menu()
-#print("stations ", stations)
 
-print()
-print()
-
-"""
-debug section
-"""
-any_station = temp_list[14]
+input_station()
 
 
-def debuggingFunc(station_list, a_station, end_station):
-    print("*"*((32*6)-3))
-    print("for debugging")
-    print("*"*((32*6)-3))
-    print(f"{bcolors.OKGREEN}temp_list:{bcolors.ENDC}", station_list)
-    print("*"*((32*6)-3))
-    print(f"{bcolors.OKGREEN}a station:{bcolors.ENDC}", a_station)
-    print("*"*((32*6)-3))
-    print(f"{bcolors.OKGREEN}last station:{bcolors.ENDC}", end_station)
-    print("*"*((32*6)-3))
-    print(f"{bcolors.OKGREEN}Stations in total:{bcolors.ENDC}", len(station_list))
-    print("*"*((32*6)-3))
+####debug section#####
+
+# any_station = temp_list[14]
 
 
-#debuggingFunc(temp_list, any_station, last_station)
+# def debuggingFunc(station_list, a_station, end_station):
+#     print()
+#     print()
+#     print("*"*((32*6)-3))
+#     print("for debugging")
+#     print("*"*((32*6)-3))
+#     print(f"{bcolors.OKGREEN}temp_list:{bcolors.ENDC}", station_list)
+#     print("*"*((32*6)-3))
+#     print(f"{bcolors.OKGREEN}a station:{bcolors.ENDC}", a_station)
+#     print("*"*((32*6)-3))
+#     print(f"{bcolors.OKGREEN}last station:{bcolors.ENDC}", end_station)
+#     print("*"*((32*6)-3))
+#     print(f"{bcolors.OKGREEN}Stations in total:{bcolors.ENDC}", len(station_list))
+#     print("*"*((32*6)-3))
+
+
+# debuggingFunc(temp_list, any_station, last_station)
