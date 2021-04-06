@@ -33,7 +33,7 @@ def menu():
         print(f"{bcolors.OKGREEN}{obj.index+1}{bcolors.ENDC}.{obj.name}",
               end=' + '*obj.duration)
     print(
-        f"{bcolors.OKGREEN}{last_station['index']+1}.{bcolors.ENDC}{last_station['name']}")
+        f"Südkreuz")
     print(
         f"\n {bcolors.OKGREEN}b{bcolors.ENDC}.back  {bcolors.OKGREEN}q{bcolors.ENDC}.quit")
     print()
@@ -101,15 +101,17 @@ for obj in stations_class_list:
     stations['index'] = obj.index
     stations['name'] = obj.name
     stations['duration'] = obj.duration
+    # stations['is_down'] = obj.is_down
+    # must append to temp_list when station's statue has to be checked
     temp_list.append(
         {'index': stations['index'], 'name': stations['name'], 'duration': stations['duration']})
     # print(stations['name'], stations)
 
 
 # add last station object to the array
-temp_list.append(
-    {'index': 27, 'name': temp_list[0]['name'], 'duration': temp_list[0]['duration']})
-last_station = temp_list[-1]
+# temp_list.append(
+#    {'index': 27, 'name': temp_list[0]['name'], 'duration': temp_list[0]['duration']})
+# last_station = temp_list[-1]
 
 
 selected_stations = []
@@ -137,8 +139,9 @@ def input_station():
                         return
 
                 if station_validation(temp_list, start_station, end_station):
-                    # print(another_list)
+                    print(another_list)
                     another_list.pop()
+                    # a_list.pop()
 
                     input("Press Enter to start again")
                     menu()
@@ -149,32 +152,60 @@ def input_station():
 
 another_list = []
 minutes_list = []
+a_list = []
 
 
 def station_validation(temp_station_list, start, end):
     start = int(start) - 1
     end = int(end) - 1
-    if start < end:
-        another_list.append(temp_station_list[int(start):int(end)])
+    # if start < end:
+    #     another_list.append(temp_station_list[int(start):int(end)])
+    #     counter = 0
+    #     for i in range(len(another_list)):
+    #         for j in another_list[0]:
+    #             minutes_list.append(another_list[0][counter]['duration'])
+    #             counter += 1
+    #             minutes = 0
+    #             for k in minutes_list:
+    #                 minutes += k
+    #             train = "S41"
+    #         # printing ride-infos
+    #         infos(start, end, train, minutes)
+    #     del minutes_list[:]
+    #     return "S41"
+
+    if end - start >= 10:
+        another_list.append(list(reversed(temp_station_list[0:int(start)])))
         counter = 0
-        for i in range(len(another_list)):
-            for j in another_list[0]:
+        while len(minutes_list) <= len(another_list)+1:
+            for i in range(len(another_list)):
                 minutes_list.append(another_list[0][counter]['duration'])
                 counter += 1
-                minutes = 0
-                for k in minutes_list:
-                    minutes += k
-                train = "S41"
-            infos(start, end, train, minutes)
+        # another_list[0].insert(0, temp_station_list[int(start)])
+        for obj in temp_station_list[-1*(len(temp_station_list)-(end)):]:
+            stations['index'] = obj['index']
+            stations['name'] = obj['name']
+            stations['duration'] = obj['duration']
+            # stations['is_down'] = obj['is_down']
+            # must append to another_list when station's statue has to be checked
+            another_list[0].insert(
+                start, {'index': stations['index'], 'name': stations['name'], 'duration': stations['duration']})
+            minutes_list.append(stations['duration'])
+            minutes = 0
+            #     for k in minutes_list:
+            #         minutes += k
+        # train = "S42"
+        # infos(start, end, train, minutes)
+        print(minutes_list)
         del minutes_list[:]
-        return "S41"
+        return "S42"
 
 
 def infos(start, end, train, minutes):
     print()
     print("<< From", temp_list[start]['name'],
           "To", temp_list[end]['name'])
-    print("<< Ride the", train, "for", end-start, "stations")
+    print("<< Ride the", train, "for", (end-start)//2, "stations")
     print("<< Duration:", minutes, "minutes")
     greetings = ["<< Be aware of unfriendly Ticket-controllers!!!",
                  "<< Enjoy Berlin", "<< Have a nice Day"]
